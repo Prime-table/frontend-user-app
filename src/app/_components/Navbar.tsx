@@ -23,18 +23,18 @@ const Navbar = () => {
   ]
 
   return (
-    <nav className="bg-[#FAFAFA] shadow-sm fixed top-0 left-0 right-0 z-50">
-      <div className="container mx-auto flex items-center justify-between py-4 px-6">
+    <nav className="bg-[#FAFAFA] h-[112px] shadow-[0_2px_16.6px_0px_#00000040] fixed top-0 left-0 right-0 z-50 flex items-center">
+      <div className="container mx-auto flex items-center justify-between py-4 px-20">
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center space-x-2"
+          className="flex items-center space-x-2 text-background text-[16px]"
         >
           <Image
             src={logo}
             alt="PrimeTable Logo"
-            width={32}
-            height={32}
+            width={111}
+            height={132}
           />
         </Link>
 
@@ -44,7 +44,7 @@ const Navbar = () => {
             <Link
               key={link.name}
               href={link.href}
-              className="text-gray-800 hover:text-red-600 transition-colors"
+              className="text-background hover:text-red-600 transition-colors"
             >
               {link.name}
             </Link>
@@ -54,8 +54,8 @@ const Navbar = () => {
         {/* CTA Button */}
         <div>
           <Link
-            href="/get-started"
-            className="bg-red-600 text-white px-6 py-2 rounded-md font-medium hover:bg-red-700 transition-colors"
+            href="/user-type"
+            className="bg-secondary text-white px-6 py-2 rounded-md font-medium hover:bg-red-700 transition-colors w-[187px] h-[64px]"
           >
             Get Started
           </Link>

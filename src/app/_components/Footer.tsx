@@ -9,6 +9,8 @@ import {
   FaFacebookF,
 } from 'react-icons/fa'
 
+import logo from '../../../public/icons/logo-white.svg'
+
 export default function Footer() {
   return (
     <footer className="bg-black text-white">
@@ -18,14 +20,11 @@ export default function Footer() {
         <div>
           <div className="flex items-center space-x-2">
             <Image
-              src="/logo.svg"
+              src={logo}
               alt="PrimeTable"
-              width={40}
-              height={40}
+              width={171}
+              height={143}
             />
-            <span className="text-2xl font-semibold">
-              PrimeTable
-            </span>
           </div>
           <p className="mt-4 text-sm text-gray-400">
             © 2025 Prime Table
