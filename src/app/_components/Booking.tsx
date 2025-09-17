@@ -1,10 +1,7 @@
 'use client'
 
-import {
-  useParams,
-  useRouter,
-} from 'next/navigation'
 import React, { useState } from 'react'
+import { usePaymentRedirect } from '../_hooks/bookingRedirect'
 
 export default function BookingForm() {
   const [formData, setFormData] = useState({
@@ -21,12 +18,7 @@ export default function BookingForm() {
     tableType: '',
   })
 
-  const router = useRouter()
-
-  const params = useParams()
-
-  const bookingId = params.id
-  console.log('Booking ID:', bookingId)
+  const { redirectTo } = usePaymentRedirect()
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -93,8 +85,8 @@ export default function BookingForm() {
     e: React.FormEvent,
   ) => {
     e.preventDefault()
+    redirectTo('payment')
 
-    router.push(`/more-menu/${bookingId}/payment`)
     // if (!validate()) return
 
     // try {
@@ -123,7 +115,7 @@ export default function BookingForm() {
   }
 
   return (
-    <div className="w-full px-[58px] py-[52px] border-[1px] border-[#E0E0E0] shadow-[0px_2px_10px_0px_#00000080] rounded-[16px] h-full">
+    <>
       <h2 className="text-center font-medium text-[24px] leading-[100%] mb-[42px] ">
         Booking Form
       </h2>
@@ -214,6 +206,6 @@ export default function BookingForm() {
           </button>
         </div>
       </form>
-    </div>
+    </>
   )
 }

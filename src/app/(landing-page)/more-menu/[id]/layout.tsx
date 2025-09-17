@@ -1,3 +1,4 @@
+import Faqs from '@/app/_components/landing-page/Faqs'
 import MenuItem from '@/app/_components/landing-page/MenuItem'
 import { menuCards } from '@/app/_components/menuData'
 import Image from 'next/image'
@@ -52,7 +53,7 @@ export default function BookingLayout({
             <Image
               src={card.image}
               alt={card.title}
-              width={550}
+              width={600}
               height={600}
               className="rounded-[8px] object-cover h-[600px] "
             />
@@ -72,11 +73,14 @@ export default function BookingLayout({
               </p>
             </div>
           </div>
-          {children}
+          <div className="w-full h-[729px] border-[#E0E0E0] rounded-2xl border px-[58px] py-[52px] shadow-[0px_2px_10px_0px_#00000080]">
+            {children}
+          </div>
         </div>
 
         <MenuItem recommended={recommended} />
       </div>
+      <Faqs />
     </>
   )
 }
