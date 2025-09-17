@@ -1,5 +1,5 @@
+import UserType from '@/app/_components/authentication/UserType'
 import React from 'react'
-import UserType from '../_components/authentication/UserType'
 
 export default function LoginPage() {
   return (

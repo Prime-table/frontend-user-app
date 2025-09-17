@@ -7,7 +7,7 @@ import AboutUs from './AboutUs'
 import Faqs from './Faqs'
 import Partners from './Partners'
 
-export default function Home() {
+export default function LandingPage() {
   return (
     <div>
       <Hero />

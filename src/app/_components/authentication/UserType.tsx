@@ -16,7 +16,7 @@ function UserType() {
       <div className="shadow-[0px_2px_10px_0px_#00000080] flex flex-col gap-4 w-[500px] px-[30px] h-[557px] justify-center items-center border border-[#E0E0E0]">
         <Link
           className="bg-secondary hover:opacity-80 rounded-[8px] text-[#ffffff] w-full text-center py-5 font-semibold leading-[100%] "
-          href="/customer-login"
+          href="/user-type/customer-login"
         >
           Customer
         </Link>
