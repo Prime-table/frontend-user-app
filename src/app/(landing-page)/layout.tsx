@@ -14,7 +14,6 @@ export default function RootLayout({
       <main className="px-[77px] mt-[150px]">
         {children}
       </main>
-      {/* <Faqs /> */}
       <Footer />
     </>
   )
