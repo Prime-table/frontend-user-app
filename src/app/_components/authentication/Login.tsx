@@ -1,11 +1,43 @@
 'use client'
 import Image from 'next/image'
-import React from 'react'
-
+import React, { useState } from 'react'
 import logo from '../../../../public/icons/logo.svg'
 import Link from 'next/link'
+import { useAuthStore } from '@/app/_store/auth'
+import { useRouter } from 'next/navigation'
 
 function Login() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const { login } = useAuthStore()
+
+  const router = useRouter()
+
+  const userData = {
+    id: 'gftgtjj',
+    name: 'Idris',
+    email: 'idris@example.com',
+    avatar: 'https://example.com/avatar.jpg',
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+
+    login(userData)
+
+    router.push('/user')
+
+    console.log('Login attempt:', {
+      email,
+      password,
+    })
+
+    // Reset after submit (optional)
+    setEmail('')
+    setPassword('')
+  }
+
   return (
     <div className="pb-[30px] flex flex-col h-screen w-full items-center justify-center bg-[#ffffff]">
       <Image
@@ -20,7 +52,7 @@ function Login() {
             Customer Login
           </p>
           <form
-            action=""
+            onSubmit={handleSubmit}
             className="flex flex-col gap-4"
           >
             <div className="flex flex-col w-full">
@@ -34,9 +66,14 @@ function Login() {
                 type="email"
                 id="email"
                 required
+                value={email}
+                onChange={(e) =>
+                  setEmail(e.target.value)
+                }
                 className="border border-[#ADADAD] rounded-[8px] p-[12px] focus:outline-none focus:ring-1 focus:ring-secondary"
               />
             </div>
+
             <div className="flex flex-col w-full">
               <label
                 className="text-[16px] font-normal leading-[100%] text-[#1F1E1E] mb-[4px]"
@@ -48,9 +85,14 @@ function Login() {
                 type="password"
                 id="password"
                 required
+                value={password}
+                onChange={(e) =>
+                  setPassword(e.target.value)
+                }
                 className="border border-[#ADADAD] rounded-[8px] p-[12px] focus:outline-none focus:ring-1 focus:ring-secondary"
               />
             </div>
+
             <div className="flex flex-col">
               <button
                 className="bg-secondary text-white font-semibold rounded-[8px] py-[12px] px-[16px] hover:opacity-80"
@@ -69,7 +111,7 @@ function Login() {
             <p className="text-center text-[16px] font-normal leading-[100%] text-[#1F1E1E]">
               Don&apos;t have an account?{' '}
               <Link
-                href="/signup"
+                href="/user-type/signup"
                 className="text-secondary"
               >
                 Sign Up
