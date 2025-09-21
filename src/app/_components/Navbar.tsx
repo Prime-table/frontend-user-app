@@ -5,10 +5,14 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import logo from '../../../public/icons/logo.svg'
 import { useAuthStore } from '../_store/auth'
+import { usePathname } from 'next/navigation'
+import Search from './Search'
 
 const Navbar = () => {
   const { user, isAuthenticated, logout } =
     useAuthStore()
+
+  const pathname = usePathname()
 
   const navLinks = [
     { name: 'Home', href: '#hero' },
@@ -86,22 +90,26 @@ const Navbar = () => {
         </Link>
 
         {/* Nav Links */}
-        <div className="hidden md:flex space-x-6">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className={`transition-colors ${
-                activeSection ===
-                link.href.replace('#', '')
-                  ? 'text-red-600 font-semibold'
-                  : 'text-background hover:text-red-600'
-              }`}
-            >
-              {link.name}
-            </a>
-          ))}
-        </div>
+        {pathname.startsWith('/more-menu') ? (
+          <Search onSearch={() => {}} query="" />
+        ) : (
+          <div className="hidden md:flex space-x-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className={`transition-colors ${
+                  activeSection ===
+                  link.href.replace('#', '')
+                    ? 'text-red-600 font-semibold'
+                    : 'text-background hover:text-red-600'
+                }`}
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
+        )}
 
         {isAuthenticated && user?.avatar ? (
           <Image

@@ -26,7 +26,7 @@ function Search({
   }
 
   return (
-    <div className="bg-white focus-within:ring-[0.5px] focus-within:ring-secondary pt-[12px] pl-[26px] pb-[12px] pr-[12px] flex flex-row gap-2 w-[900px] h-[80px] items-center border-[0.1px] border-border shadow-[0px_12.3px_32.09px_0px_#00000040] rounded-[102px]">
+    <div className="bg-white focus-within:ring-[0.5px] focus-within:ring-secondary pt-[12px] pl-[26px] pb-[12px] pr-[12px] flex flex-row gap-2 w-[800px] h-[80px] items-center border-[0.1px] border-border shadow-[0px_12.3px_32.09px_0px_#00000040] rounded-[102px]">
       <Image
         src={locationIcon}
         alt="Location Icon"

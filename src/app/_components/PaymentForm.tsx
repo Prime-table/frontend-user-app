@@ -127,8 +127,8 @@ export default function PaymentForm() {
         </button>
       </form>
       <Link
-        href="/transactions"
-        className="text-[16px] mt-4 block text-center"
+        href="/history"
+        className="text-[16px] mt-4 block text-center "
       >
         View Transaction History
       </Link>

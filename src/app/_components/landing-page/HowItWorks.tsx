@@ -8,6 +8,7 @@ import step1Icon from '../../../../public/icons/step-1-icon.svg'
 import step2Icon from '../../../../public/icons/step-2-icon.svg'
 import step3Icon from '../../../../public/icons/step-3-icon.svg'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const stepCard = [
   {
@@ -77,9 +78,12 @@ function HowItWorks() {
               <p className="text-dark text-[16px] font-normal mb-[24px] leading-[140%] ">
                 {step.content}
               </p>
-              <button className=" w-full bg-secondary text-white text-[16px] leading-[100%] font-semibold  py-5 px-10 rounded-[8px] cursor-pointer ">
+              <Link
+                href="/user-type"
+                className=" flex justify-center items-center w-full bg-secondary text-white text-[16px] leading-[100%] font-semibold  py-5 px-10 rounded-[8px] cursor-pointer "
+              >
                 Get Started
-              </button>
+              </Link>
             </div>
           </div>
         ))}

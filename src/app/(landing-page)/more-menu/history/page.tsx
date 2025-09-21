@@ -1,4 +1,3 @@
-import Faqs from '@/app/_components/landing-page/Faqs'
 import MenuItem from '@/app/_components/landing-page/MenuItem'
 import { menuCards } from '@/app/_components/menuData'
 import Table from '@/app/_components/table/Table'
@@ -16,7 +15,6 @@ export default function HistoryPage() {
     <div>
       <Table headers={headers} data={tableData} />
       <MenuItem recommended={recommended} />
-      <Faqs />
     </div>
   )
 }

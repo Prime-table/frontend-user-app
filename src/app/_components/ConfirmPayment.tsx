@@ -17,14 +17,17 @@ function ConfirmPayment() {
         <p>$20,000.00</p>
         <div className="w-full ">
           <Link
-            className="text-[16px] font-semibold bg-secondary text-white text-center py-2 px-4 rounded-[8px] h-[64px] w-full"
-            href=""
+            className="text-[16px] font-semibold bg-secondary text-white text-center flex justify-center items-center py-2 px-4 rounded-[8px] h-[64px] w-full"
+            href="/more-menu/history"
           >
             View Booking History
           </Link>
         </div>
 
-        <Link className="text-center" href="/">
+        <Link
+          className="text-center flex justify-center items-center"
+          href="/"
+        >
           Home
         </Link>
       </div>
