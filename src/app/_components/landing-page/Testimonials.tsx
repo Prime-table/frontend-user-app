@@ -3,6 +3,7 @@ import React from 'react'
 
 import quote from '../../../../public/icons/quote.svg'
 import profile from '../../../../public/icons/reviewer.svg'
+import ScatteredImages from './ScatteredImage'
 
 const testimonialsCards = Array.from(
   { length: 4 },
@@ -20,6 +21,7 @@ const rating = Array(5).fill('⭐')
 function Testimonials() {
   return (
     <section id="testimonials" className="py-20">
+      <ScatteredImages />
       <h2 className="text-center text-[40px] leading-[100%] font-semibold text-secondary mb-3">
         What Customers Are Saying
       </h2>

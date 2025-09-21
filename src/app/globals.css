@@ -14,7 +14,10 @@
   --color-dark: #383838;
   --color-header: #0b0b0b;
   --color-border: #e9e9e9;
+  --color-input-border: #adadad;
   --color-shadow: #9f9f9f73;
+  --color-success: #27ae60;
+  --color-warning: #f2994a;
 }
 
 @media (prefers-color-scheme: dark) {
