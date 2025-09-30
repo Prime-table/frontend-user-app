@@ -4,7 +4,6 @@ import HowItWorks from './HowItWorks'
 import Menu from './Menu'
 import Testimonials from './Testimonials'
 import AboutUs from './AboutUs'
-import Faqs from './Faqs'
 import Partners from './Partners'
 
 export default function LandingPage() {
@@ -16,7 +15,6 @@ export default function LandingPage() {
       <Menu />
       <Testimonials />
       <AboutUs />
-      <Faqs />
     </div>
   )
 }

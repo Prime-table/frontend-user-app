@@ -9,6 +9,9 @@ function MenuItem({
 }: {
   recommended: MenuCardType[]
 }) {
+  const handleSelectCard = (id: string) => {
+    console.log('Selected card ID:', id)
+  }
   return (
     <div className="pt-[34px] pb-40 ">
       <div className="text-center mb-[45px]">
@@ -23,7 +26,9 @@ function MenuItem({
           <MenuCard
             key={rec.id}
             card={rec}
-            handleSelectCard={() => {}}
+            handleSelectCard={() => {
+              handleSelectCard
+            }}
           />
         ))}
       </div>

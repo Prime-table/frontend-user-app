@@ -1,80 +1,62 @@
+'use client'
+
 import Image from 'next/image'
-import React from 'react'
+import { useMemo } from 'react'
 
-import quote from '../../../../public/icons/quote.svg'
-import profile from '../../../../public/icons/reviewer.svg'
-import ScatteredImages from './ScatteredImage'
+const images = [
+  '/images/img1.svg',
+  '/images/img2.svg',
+  '/images/img3.svg',
+  '/images/img4.svg',
+  '/images/img5.svg',
+  '/images/img6.svg',
+  '/images/img7.svg',
+  '/images/img8.svg',
+  '/images/img9.svg',
+]
 
-const testimonialsCards = Array.from(
-  { length: 4 },
-  (_, i) => ({
-    id: i + 1,
-    name: `Ada Obi`,
-    feedback:
-      'Prime Table has completely changed the way Me and my Wife settle rifts, we just book a nice restaurant then show-up to enjoy our marriage.',
-    location: 'Lagos, Nigeria',
-  }),
-)
+// Predefined scattered positions
+const positions = [
+  { top: '10%', left: '0%' },
+  { top: '5%', left: '25%' },
+  { top: '20%', left: '45%' },
+  { top: '40%', left: '10%' },
+  { top: '35%', left: '35%' },
+  { top: '50%', left: '60%' },
+  { top: '15%', left: '70%' },
+  { top: '55%', left: '25%' },
+  { top: '65%', left: '90%' },
+]
 
-const rating = Array(5).fill('⭐')
+export default function ScatteredImages() {
+  // 👇 Generate stable "random-like" rotations, same on SSR & client
+  const rotations = useMemo(
+    () =>
+      images.map((_, i) => ((i * 13) % 10) - 5), // produces -5 to +5 deg
+    [],
+  )
 
-function Testimonials() {
   return (
-    <section id="testimonials" className="py-20">
-      <ScatteredImages />
-      <h2 className="text-center text-[40px] leading-[100%] font-semibold text-secondary mb-3">
-        What Customers Are Saying
-      </h2>
-      <p className="text-center text-[16px] font-normal text-dark mb-[113px]">
-        A few of the feedbacks and reviews we have
-        received
-      </p>
-      <div className="grid grid-cols-2 gap-[30px]">
-        {testimonialsCards.map((card) => (
-          <div
-            key={card.id}
-            className="  h-[324px] shadow-[0_2px_9px_0px_#00000040] rounded-[8px] p-6"
-          >
-            <div className=" mb-4 flex flex-row justify-between items-center">
-              <Image
-                src={quote}
-                alt="quote icon"
-                width={48}
-                height={34}
-                className=""
-              />
-              <p>
-                {rating.map((star, index) => (
-                  <span key={index}>{star}</span>
-                ))}
-              </p>
-            </div>
-
-            <p className="text-[16px] font-normal text-dark leading-[200%] mb-11 mt-8 ">
-              {card.feedback}
-            </p>
-            <div className="flex flex-row gap-4 items-center justify-start">
-              <Image
-                src={profile}
-                alt="profile picture"
-                width={70}
-                height={70}
-                className="rounded-full"
-              />
-              <div>
-                <h4 className="text-[20px] font-semibold leading-[100%] text-dark mb-2">
-                  {card.name}
-                </h4>
-                <p className="text-[16px] leading-[100%] font-normal text-[#717276]">
-                  {card.location}
-                </p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
+    <div className="relative w-full h-[500px]">
+      {images.map((src, i) => (
+        <div
+          key={i}
+          className="absolute"
+          style={{
+            top: positions[i].top,
+            left: positions[i].left,
+            transform: `rotate(${rotations[i]}deg)`,
+          }}
+        >
+          <Image
+            src={src}
+            alt={`Scattered ${i}`}
+            width={120}
+            height={120}
+            className="rounded-lg shadow-md object-cover"
+          />
+        </div>
+      ))}
+    </div>
   )
 }
-
-export default Testimonials
