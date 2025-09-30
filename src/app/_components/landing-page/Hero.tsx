@@ -14,6 +14,7 @@ import Search from '../Search'
 const satisfy = Satisfy({
   weight: '400',
   subsets: ['latin'],
+  display: 'swap',
 })
 
 const socials = [

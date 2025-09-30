@@ -35,7 +35,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 150 // offset for navbar height
+      const scrollPosition = window.scrollY + 150
       const sections = navLinks.map((link) => {
         const el = document.querySelector(
           link.href,
@@ -111,14 +111,16 @@ const Navbar = () => {
           </div>
         )}
 
-        {isAuthenticated && user?.avatar ? (
-          <Image
-            src={user.avatar}
-            alt={user?.name || 'User avatar'}
-            width={40}
-            height={40}
-            className="rounded-full"
-          />
+        {isAuthenticated ? (
+          <div onClick={() => logout()}>
+            <Image
+              src="/icons/user-avatar.jpg"
+              alt={user?.name || 'User avatar'}
+              width={80}
+              height={80}
+              className="rounded-full"
+            />
+          </div>
         ) : (
           <div>
             <Link

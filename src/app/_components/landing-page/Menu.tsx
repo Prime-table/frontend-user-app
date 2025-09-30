@@ -1,18 +1,35 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useMenuStore } from '@/app/_store/menuStore'
-import {
-  menuCards,
-  MenuCardType,
-} from '../menuData'
+
 import MenuCard from './MenuCard'
+import { getMenus } from '@/app/_lib/api'
+import { MenuCardType } from '../menuData'
 
 function Menu() {
   const { showAll, setShowAll } = useMenuStore()
+  const [menuCards, setMenuCards] =
+    React.useState<MenuCardType[]>([])
 
   const router = useRouter()
+
+  useEffect(() => {
+    async function fetchMenus() {
+      try {
+        const res = await getMenus()
+        // The API returns { success, count, data }
+        setMenuCards(res.data)
+      } catch (err) {
+        console.error(
+          'Failed to fetch menus:',
+          err,
+        )
+      }
+    }
+    fetchMenus()
+  }, [])
 
   const displayedCards = showAll
     ? menuCards
@@ -26,7 +43,7 @@ function Menu() {
   const handleSelectCard = (
     card: MenuCardType,
   ) => {
-    router.push(`/more-menu/${card.id}`)
+    router.push(`/more-menu/${card._id}`)
     console.log('Selected card:', card)
   }
 
@@ -41,7 +58,7 @@ function Menu() {
       <div className="grid grid-cols-2 justify-between gap-5">
         {displayedCards.map((card) => (
           <MenuCard
-            key={card.id}
+            key={card._id}
             card={card}
             handleSelectCard={handleSelectCard}
           />

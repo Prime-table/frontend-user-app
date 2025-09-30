@@ -10,23 +10,25 @@ function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const { login } = useAuthStore()
+  const { login, signin } = useAuthStore()
 
   const router = useRouter()
 
   const userData = {
-    id: 'gftgtjj',
-    name: 'Idris',
-    email: 'idris@example.com',
-    avatar: 'https://example.com/avatar.jpg',
+    email,
+    password,
   }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
-    login(userData)
-
-    router.push('/user')
+    signin(userData)
+      .then(() => {
+        router.push('/')
+      })
+      .catch((error) => {
+        console.error('Login failed:', error)
+      })
 
     console.log('Login attempt:', {
       email,

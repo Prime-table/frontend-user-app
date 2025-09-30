@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import Menu from './landing-page/Menu'
-import Faqs from './landing-page/Faqs'
 
 function MoreMenu() {
   return (
@@ -16,7 +15,7 @@ function MoreMenu() {
       </div> */}
 
       <Menu />
-      <Faqs />
+      {/* <Faqs /> */}
     </div>
   )
 }
